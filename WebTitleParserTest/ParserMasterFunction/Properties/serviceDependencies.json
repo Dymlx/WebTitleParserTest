@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "type": "appInsights"
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": "QueueConnectionString"
+    },
+    "storage1": {
+      "type": "storage",
+      "connectionId": "QUEUE_CONNECTION_STRING"
+    }
+  }
+}
