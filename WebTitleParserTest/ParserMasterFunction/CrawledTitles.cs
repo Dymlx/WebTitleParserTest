@@ -35,13 +35,20 @@ namespace ParserMasterFunction
 
         private static TitleResponce[] CreateAggregatedResults(IEnumerable<TitleDB> urls)
         {
-            var dictionary = new Dictionary<string, List<string>>();
+            var dictionary = new Dictionary<string, (List<string> Titles, List<string> Urls)>();
             foreach(var url in urls)
             {
-                if (!dictionary.ContainsKey(url.Domain)) dictionary.Add(url.Domain, new List<string>());
-                dictionary[url.Domain].Add(url.Title);
+                if (!dictionary.ContainsKey(url.Domain)) 
+                    dictionary.Add(url.Domain, (new List<string>(), new List<string>()));
+                dictionary[url.Domain].Titles.Add(url.Title);
+                dictionary[url.Domain].Urls.Add(url.Url);
             }
-            return dictionary.Select(kvp => new TitleResponce { Domain = kvp.Key, Titles = kvp.Value.ToArray() }).ToArray();
+            return dictionary.Select(kvp => new TitleResponce
+            {
+                Domain = kvp.Key,
+                Titles = kvp.Value.Titles.ToArray(), 
+                Urls = kvp.Value.Urls.ToArray() 
+            }).ToArray();
         }
 
         private static async Task<TitleDB[]> GetAllTitles(DocumentClient client)
