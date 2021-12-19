@@ -1,11 +1,16 @@
 {
   "dependencies": {
     "appInsights1": {
-      "type": "appInsights"
+      "type": "appInsights",
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING"
     },
     "secrets1": {
       "type": "secrets",
-      "connectionId": "QueueConnectionString"
+      "connectionId": "AZURE_KEY_VAULT"
+    },
+    "cosmosdb1": {
+      "type": "cosmosdb",
+      "connectionId": "COSMOS_DB_CONNECTION_STRING"
     },
     "storage1": {
       "type": "storage",

@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/microsoft.insights/components/testtitlecrawler",
+      "type": "appInsights.azure",
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING",
+      "secretStore": "AzureAppSettings"
+    },
+    "secrets1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/testtitlecrawlerkv",
+      "type": "secrets.keyVault",
+      "connectionId": "AZURE_KEY_VAULT",
+      "secretStore": "AzureAppSettings"
+    },
+    "cosmosdb1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.DocumentDB/databaseAccounts/testtitlecrawlerdb",
+      "type": "cosmosdb.azure",
+      "connectionId": "COSMOS_DB_CONNECTION_STRING",
+      "secretStore": "AzureKeyVault"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/testtitlecrawlersa",
+      "type": "storage.azure",
+      "connectionId": "QUEUE_CONNECTION_STRING",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
