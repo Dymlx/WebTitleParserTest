@@ -10,11 +10,11 @@ on:
   workflow_dispatch:
 
 env:
-  DOTNET_VERSION: 'v4.0' # set this to the dotnet version to use  AZURE_FUNCTIONAPP_NAME: testtitlecrawler
+  DOTNET_VERSION: 'v4.0' # set this to the dotnet version to use  
+  AZURE_FUNCTIONAPP_NAME: testtitlecrawler
   AZURE_FUNCTIONAPP_PACKAGE_PATH: .\published
   CONFIGURATION: Release
   WORKING_DIRECTORY: 'WebTitleParserTest'
-  DOTNET_CORE_VERSION_INPROC: '
 
 jobs:
   build-and-deploy:
