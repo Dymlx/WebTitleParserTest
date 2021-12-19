@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-right">
+    @using (Html.BeginForm())
+    {
+        @Html.TextAreaFor(m => m.Urls, 15, 155, null)
+        <input type="submit" value="Submit" asp-page-handler="Submit" />
+    }
+</div>
+<div class="text-left">
+    @if (ViewData["SubmitStatus"] != null)
+    {
+        <p>Submit status:</p> @ViewData["SubmitStatus"]
+    }
+</div>
