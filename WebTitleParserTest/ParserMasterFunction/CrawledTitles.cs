@@ -15,6 +15,8 @@ using Microsoft.Azure.Documents.Linq;
 
 namespace ParserMasterFunction
 {
+    //Standalone node
+    //Used for retreaving parsed titles
     public static class CrawledTitles
     {
         [FunctionName("CrawledTitles")]
@@ -33,6 +35,8 @@ namespace ParserMasterFunction
             return new OkObjectResult(results);
         }
 
+        //Prepare resulst for being sent to requester
+        //Grouping together titles and urls under common domain name
         private static TitleResponce[] CreateAggregatedResults(IEnumerable<TitleDB> urls)
         {
             var dictionary = new Dictionary<string, (List<string> Titles, List<string> Urls)>();
@@ -51,6 +55,7 @@ namespace ParserMasterFunction
             }).ToArray();
         }
 
+        //Fetshing all records from Cosmos DB
         private static async Task<TitleDB[]> GetAllTitles(DocumentClient client)
         {
             var results = new List<TitleDB>();

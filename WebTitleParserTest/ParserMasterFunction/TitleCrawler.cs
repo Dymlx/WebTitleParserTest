@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ParserMasterFunction
 {
+    //Follower node
+    //Uses Azure Storage Account Queue for communication with leader node
+    //Uses Azure Cosmos DB for storing results
     public static class TitleCrawler
     {
         [FunctionName("TitleCrawler")]
@@ -39,6 +42,8 @@ namespace ParserMasterFunction
             }
         }
 
+        //Ectract <title> by simple xPath
+        //Uses third party HtmlAgilityPack lib for html parsing
         private static string ExtractTitle(string pageContents)
         {
             HtmlDocument pageDocument = new HtmlDocument();

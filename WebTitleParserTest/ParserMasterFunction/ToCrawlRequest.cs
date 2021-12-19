@@ -15,6 +15,9 @@ using System.Linq;
 
 namespace ParserMasterFunction
 {
+    //Leader Node
+    //Uses Azure Storage Account Queue for communication with follower node
+    //Uses Azure Cosmos DB for storing requested urls
     public static class ToCrawlRequest
     {
         [FunctionName("ToCrawlRequest")]
@@ -42,6 +45,8 @@ namespace ParserMasterFunction
             return new OkResult();
         }
 
+        //Method was created for checking if url was not used for parsing once ago
+        //If some record was found is will be excluded from sending to follower node
         private static async Task<UrlDB[]> FilterUrls(DocumentClient client, UrlDB[] urlsArray)
         {
             var results = new List<UrlDB>();
@@ -70,6 +75,8 @@ namespace ParserMasterFunction
             return results.ToArray();
         }
 
+        //Parsing and extratcing domain from received URLs
+        //Results are collected inside prepared class
         public static UrlDB[] ParseRequestBody(string requestBody)
         {
             var urls = JsonConvert.DeserializeObject<List<string>>(requestBody);
