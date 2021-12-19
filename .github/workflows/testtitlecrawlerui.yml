@@ -3,6 +3,9 @@ on:
   push:
     branches:
     - main
+    paths: 
+    - '.github/workflows/testtitlecrawlerui.yml'
+    - 'WebTitleParserTest/TestTitleCrawlerClient/**'
 env:
   AZURE_WEBAPP_NAME: testtitlecrawlerui
   AZURE_WEBAPP_PACKAGE_PATH: WebTitleParserTest\TestTitleCrawlerClient\published

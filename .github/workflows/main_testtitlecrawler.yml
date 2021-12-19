@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - main
+    paths: 
+    - '.github/workflows/main_testtitlecrawler.yml'
+    - 'WebTitleParserTest/ParserMasterFunction/**'
   workflow_dispatch:
 
 env:
