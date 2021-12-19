@@ -12,7 +12,9 @@
             <ul>
                 @for (int i = 0; i < response.Titles.Length; i++)
                 {
-                    <li>@string.Format("{0} -> {1}", i + 1, response.Titles[i])</li>
+                    <li>
+                        @string.Format("{0} -> {1} URL: {2}", i + 1, response.Titles[i], response.Urls[i]);
+                    </li>
                 }
             </ul>
         </article>
